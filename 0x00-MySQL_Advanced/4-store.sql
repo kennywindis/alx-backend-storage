@@ -1,5 +1,5 @@
--- sql script that lists all bands with Glam rock as their main style,ranked by their longevity
-SELECT DISTINCT `band_name`,
-IFNULL(`split`, 2020) - `formed` as `lifespan`
-  FROM `metal_bands` WHERE FIND_IN_SET('Glam rock', style)
-  ORDER BY `lifespan` DESC;
+-- SQL script that creates a trigger that decreases the quantity of an item after adding a new order
+CREATE TRIGGER order_decrease AFTER INSERT ON orders
+FOR EACH ROW UPDATE items
+SET quantity = quantity - NEW.number
+WHERE name = NEW.item_name;
