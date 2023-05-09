@@ -6,8 +6,8 @@ from pymongo import MongoClient
 def helper(a: dict) -> int:
     """return log"""
     client = MongoClient('mongodb://127.0.0.1:27017')
-    logs = client.logs.nginx
-    return logs.count_documents(a)
+    logs_collection= client.logs.nginx
+    return logs_collection.count_documents(a)
 
 
 def main():
